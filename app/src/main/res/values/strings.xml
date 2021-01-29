@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Sample Master Detail</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="track_detail_image_content_description">Image of track</string>
+    <string name="track_item_image">Picture of track</string>
+</resources>

@@ -1,0 +1,46 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.appetiser.exam1.data.UserActivity"/>
+        <variable
+            name="viewModel"
+            type="com.appetiser.exam1.viewmodels.TrackListViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/user_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="8dp"
+            android:text="@{viewModel.userActivity.dateTimeString}"
+            android:textColor="@android:color/white" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingEnd="@dimen/card_side_margin"
+                android:paddingStart="@dimen/card_side_margin"
+                android:paddingTop="@dimen/header_margin"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:spanCount="@integer/grid_count"
+                tools:context=".MainActivity"
+                tools:listitem="@layout/list_item_track"/>
+
+        </FrameLayout>
+    </LinearLayout>
+
+</layout>

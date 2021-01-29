@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/trackListFragment">
+    <fragment
+        android:id="@+id/trackListFragment"
+        android:name="com.appetiser.exam1.TrackListFragment"
+        android:label="Master"
+        tools:layout="@layout/fragment_list_track">
+        <action
+            android:id="@+id/action_track_list_fragment_to_track_detail_fragment"
+            app:destination="@id/trackDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/trackDetailFragment"
+        android:name="com.appetiser.exam1.TrackDetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_track_detail">
+        <argument
+            android:name="trackId"
+            app:argType="string" />
+    </fragment>
+</navigation>
