@@ -29,3 +29,4 @@ UI and design
 Almost bare and basic with only minimal custom views and animations
 
 *NOTE min sdk is Android M
+Allow "Install from unknown sources" to install the uploaded apk
