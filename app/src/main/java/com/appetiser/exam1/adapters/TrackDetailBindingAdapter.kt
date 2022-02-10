@@ -1,6 +1,5 @@
 package com.appetiser.exam1.adapters
 
-
 import android.text.method.LinkMovementMethod
 import android.widget.ImageView
 import android.widget.TextView
@@ -19,7 +18,6 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
             .into(view)
     }
 }
-
 
 @BindingAdapter("renderHtml")
 fun bindRenderHtml(view: TextView, description: String?) {

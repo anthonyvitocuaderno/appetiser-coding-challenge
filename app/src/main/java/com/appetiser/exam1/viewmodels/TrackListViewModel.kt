@@ -18,5 +18,5 @@ class TrackListViewModel @ViewModelInject internal constructor(
 
     val userActivity = userActivityRepository.getLatest(null).asLiveData()
     val tracks: LiveData<List<Track>> = trackRepository.getAll().asLiveData()
-
+    val featured: LiveData<Track> = trackRepository.getFeatured().asLiveData()
 }

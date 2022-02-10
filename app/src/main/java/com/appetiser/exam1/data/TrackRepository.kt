@@ -1,5 +1,7 @@
 package com.appetiser.exam1.data
 
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -12,9 +14,11 @@ import javax.inject.Singleton
 @Singleton
 class TrackRepository @Inject constructor(private val trackDao: TrackDao) {
 
-    fun getAll() = trackDao.getAll()
+    fun getAll() = trackDao.getAll().map { it.filter { item -> item.trackId != "1014147187" } }
 
     fun getOne(id: String) = trackDao.getOne(id)
+
+    fun getFeatured() = trackDao.getOne("1014147187")
 
     companion object {
         private const val NETWORK_PAGE_SIZE = 25

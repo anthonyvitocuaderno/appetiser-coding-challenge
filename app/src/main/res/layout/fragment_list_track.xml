@@ -20,8 +20,12 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:padding="8dp"
-            android:text="@{viewModel.userActivity.dateTimeString}"
+            android:text=""
             android:textColor="@android:color/white" />
+
+        <include
+            android:id="@+id/featured_item"
+            layout="@layout/featured_track" />
 
         <FrameLayout
             android:layout_width="match_parent"

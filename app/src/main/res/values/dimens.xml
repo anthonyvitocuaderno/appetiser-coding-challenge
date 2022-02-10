@@ -17,6 +17,8 @@
 
     <dimen name="track_item_image_height">100dp</dimen>
 
+    <dimen name="featured_item_image_height">120dp</dimen>
+
     <!-- Padding on the bottom of a screen so that the FAB won't overlap scrolled text. -->
     <dimen name="fab_bottom_padding">72dp</dimen>
 </resources>
