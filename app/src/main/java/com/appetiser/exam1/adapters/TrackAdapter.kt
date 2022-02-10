@@ -1,6 +1,6 @@
 package com.appetiser.exam1.adapters
 
-
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.appetiser.exam1.TrackListFragmentDirections
 import com.appetiser.exam1.data.Track
 import com.appetiser.exam1.databinding.ListItemTrackBinding
+import java.util.*
 
 /**
  * Adapter for the [RecyclerView] in [TrackListFragment].
  */
-class TrackAdapter : ListAdapter<Track, RecyclerView.ViewHolder>(TrackDiffCallback()) {
+class TrackAdapter : ListAdapter<Track, RecyclerView.ViewHolder>(TrackDiffCallback()), ItemMoveCallback.ItemTouchHelperContract {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return TrackViewHolder(
@@ -47,7 +48,9 @@ class TrackAdapter : ListAdapter<Track, RecyclerView.ViewHolder>(TrackDiffCallba
             track: Track,
             view: View
         ) {
-            val direction = TrackListFragmentDirections.actionTrackListFragmentToTrackDetailFragment(track.trackId)
+            val direction = TrackListFragmentDirections.actionTrackListFragmentToTrackDetailFragment(
+                track.trackId
+            )
             view.findNavController().navigate(direction)
         }
 
@@ -57,6 +60,30 @@ class TrackAdapter : ListAdapter<Track, RecyclerView.ViewHolder>(TrackDiffCallba
                 executePendingBindings()
             }
         }
+    }
+
+    override fun onRowMoved(fromPosition: Int, toPosition: Int) {
+        // TODO optimise.
+        val newList = ArrayList(currentList);
+        if (fromPosition < toPosition) {
+            for (i in fromPosition until toPosition) {
+                Collections.swap(newList, i, i + 1)
+            }
+        } else {
+            for (i in fromPosition downTo toPosition + 1) {
+                Collections.swap(newList, i, i - 1)
+            }
+        }
+//        notifyItemMoved(fromPosition, toPosition)
+        submitList(newList)
+    }
+
+    override fun onRowSelected(myViewHolder: TrackViewHolder?) {
+        myViewHolder?.itemView?.setBackgroundColor(Color.GRAY)
+    }
+
+    override fun onRowClear(myViewHolder: TrackViewHolder?) {
+        myViewHolder?.itemView?.setBackgroundColor(Color.WHITE)
     }
 }
 
