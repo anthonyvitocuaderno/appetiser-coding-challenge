@@ -41,6 +41,7 @@ buildscript {
         hiltViewModelVersion = '1.0.0-alpha02'
         hiltWorkVersion = '1.0.0-alpha02'
         mockitoVersion = "3.11.0"
+        coreTestingVersion = '2.1.0'
     }
 
     dependencies {
